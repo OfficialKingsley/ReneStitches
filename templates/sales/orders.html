@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Orders{% endblock  %}
+{% block content %}
+<section>
+  <div class="container">
+    <h1 class="mt-5">Orders</h1>
+      <hr class="mt-4 mb-4">
+        {% for order in orders %}
+          <div class="row">
+            <div class="col-md-3 mt-2 mb-2">
+              <div class="card">
+                <div class="card-body">
+                    <p class="card-text">User: {{order.user}}</p>
+                    <p class="card-text">Price Paid: {{order.price}}</p>
+                    <p class="card-text">State: 
+                      {% if order.state == "pending" %}
+                        <button class="btn bg-warning bg-opacity-25 text-warning">Pending</button>
+                      {% elif order.state == "success" %}
+                        <button class="btn bg-success bg-opacity-25 text-success">Success</button>
+                      {% else %}
+                        <button class="btn bg-danger bg-opacity-25 text-danger">Failed</button>
+                      {% endif %}
+                    </p>
+                    <p>Time: {{order.created_at}}</p>
+                <a href="/sales/orders/{{order.id}}/" class="btn btn-primary">View Details</a>
+                {% if order.state != "success" %}
+                  <a href="http://wa.me/2349013761244?text=Hello,+I+am+a+user+of+your+website+with+the+username+of+{{user}}.+I+want+to+confirm+and+pay+for+an+order+with+the+id+of+{{order.id}}" target="_blank" rel="noopener noreferrer" class="btn btn-success">Confirm</a>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock  %}

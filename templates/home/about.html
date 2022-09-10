@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}About Us{% endblock  %}
+{% block cart_length %}
+  {% if user.is_authenticated %}
+    {{cart_length}}
+  {% endif %}
+{% endblock  %}
+{% block about %}active{% endblock  %}
+{% block content %}
+<section>
+  <div class="container">
+    <h1 class="fw-bold">About Us</h1>
+    <hr class="mt-4 mb-4"/>
+    <div class="content row mt-5">
+      <div class="image col-md-6 border">
+        <img src="{% static 'images/efadb6133c4c2be687425a2bb4b0e1b5.jpg' %}" alt="" class="img-fluid">
+      </div>
+      <div class="col-md-6 text-content">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos suscipit dolorum autem eaque cum natus. Voluptate nisi ut maxime natus earum magni, deserunt non laboriosam voluptatum culpa magnam, eos et doloribus iste quam? Obcaecati, fugit sapiente recusandae est incidunt aut illum fuga, voluptatem odio ipsum esse iure dicta provident voluptas!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, commodi molestias quam beatae nobis debitis. Natus ipsa facere, voluptatem aperiam, neque odio quibusdam rem aut quas commodi consectetur, perspiciatis explicabo soluta sunt qui sint. Modi eius sint esse quos repellendus rem, cum unde ipsum eveniet pariatur obcaecati dignissimos iusto consequuntur?</p>
+      </div>
+    </div>
+  </div>
+</section>{% endblock  %}

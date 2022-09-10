@@ -1,0 +1,58 @@
+{% extends '_base.html' %} {% load static %}
+{% block title %}Home{% endblock  %}
+{% block cart_length %}
+  {% if user.is_authenticated %}
+    {{cart_length}}
+  {% endif %}
+{% endblock  %}
+{% block index %}
+active
+{% endblock  %}
+{% block content %}
+<section class="hero">
+  <div class="container h-100">
+    <div class="h-100 d-flex align-items-center flex-wrap">
+      <div class="card-container col-md-6 mt-auto mb-auto">
+        <div class="card bg-white bg-opacity-75">
+          <div class="card-body">
+            <h1 class="card-title">Welcome to Rene's Stitches</h1>
+            <div class="card-text">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium repellendus odit voluptatibus dicta quis iure beatae eum voluptates vero odio.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus distinctio, nulla dolorum delectus unde inventore. Aspernatur omnis nulla harum dolorum.</p>
+              <a href="{% url 'products:all-products' %}" class="btn btn-primary card-link">Order Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="latest mt-5">
+  <div class="container">
+    <h2>Latest Products</h2>
+    <hr class="mt-4 mb-4"/>
+    <div class="cards row">
+
+      {% for product in products %}
+        <div class="card-container mt-2 mb-2 col-md-3">
+        <div class="card">
+          <img 
+            src="{{product.image.url}}"
+            class="card-img-top"
+          />
+          <div class="card-body">
+            <h4 class="card-title">
+              <p href="" class="text-decoration-none text-uppercase fw-light">
+                {{product.name}}
+              </p>
+            </h4>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <a href="{% url 'products:all-products' %}" class="btn btn-primary d-block">View More</a>
+  </div>
+</section>
+
+{% endblock %}

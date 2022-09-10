@@ -1,0 +1,20 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Add To Cart{% endblock  %}
+{% block content %}
+  <section>
+    <div class="container">
+      <h1 class="mt-5 fw-bold">Updating cart</h1>
+      <hr class="mt-4 mb-4">
+      <figure>
+          <img src="{{cart_item.product.image.url}}" alt="" width="300" height="300" />
+        </figure>
+      <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <br />
+        <button type="submit" class="btn btn-outline-primary">Update</button>
+      </form>
+    </div>
+  </section>
+{% endblock  %}

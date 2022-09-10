@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}
+Login
+{% endblock  %}
+{% block content %}
+<section>
+    <div class="container">
+        <h1 class="fw-bold">Login</h1>
+        <hr class="mt-4 mb-4"/>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mt-4 mb-4">
+                <label for="" class="form-label">Username</label>
+                <input type="text" name="username" class="form-control">
+            </div>
+            <div class="mt-4 mb-4">
+                <label for="" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="mt-4 mb-4">
+                <button type="submit" class="btn btn-success btn-block w-100">Login</button>
+            </div>
+            <div class="mt-4 mb-4">
+                <p>Don't Have an Account? <a href="/users/register?next=/users/login" class="text-primary">Register</a></p>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock  %}

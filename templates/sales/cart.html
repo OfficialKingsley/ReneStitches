@@ -1,0 +1,36 @@
+{% extends '_base.html' %}
+{% block title %}Cart{% endblock  %}
+{% block cart %}active{% endblock  %}
+{% block content %}
+  <section>
+    <div class="container">
+      <h1 class="text-uppercase mt-5">Cart - {{cart_length}} Items</h1>
+      <hr class="mt-4 mb-4" />
+      <form action="/sales/orders" method="POST">
+        {% csrf_token %}
+        <div class="cart_items row">
+          {% for cart_item in cart_items %}
+            <div class="card-container col-md-3">
+              <div class="card">
+                <img src="{{cart_item.product.image.url}}" alt="" class="card-img-top">
+                <div class="card-body">
+                  <h3 class="card-title">{{cart_item.product}}</h3>
+                  <h5 class="card-title">{{cart_item.product.price}}</h5>
+                  <p>Quantity: {{cart_item.quantity}}</p>
+                  <p>Total Price: {{cart_item.total_price}}</p>
+                  <a href="/sales/update-cart/{{cart_item.id}}" class="btn btn-outline-primary">Change Quantity</a>
+                  <a href="/sales/delete-cart-item/{{cart_item.id}}" class="btn btn-outline-danger">Delete</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="mt-5 mb-5">
+          <button type="submit" class="btn btn-success">Confirm Order</button>
+          <a href="{% url 'products:all-products' %}" class="btn btn-primary">Add Items</a>
+        </div>
+      </form>
+      
+    </div>
+  </section>
+{% endblock  %}
