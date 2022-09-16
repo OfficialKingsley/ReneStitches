@@ -24,6 +24,8 @@ Next you'll need to install the dependencies
 pip install -r requirements.txt
 ```
 
+You'll also probably need to run the server to start the application
+
 ```py
 python manage.py runserver
 ```
